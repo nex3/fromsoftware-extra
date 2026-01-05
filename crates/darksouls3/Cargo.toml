@@ -8,8 +8,10 @@ readme = false
 description = "Additional hook-based APIs for working with Dark Souls III"
 
 [dependencies]
+darksouls3.workspace = true
 pelite.workspace = true
 fromsoftware-shared.workspace = true
+ilhook.workspace = true
 thiserror.workspace = true
 windows.workspace = true
 

@@ -9,4 +9,7 @@
 ///
 /// These are populated from `mapper-profile.toml` in the root of this package
 /// using `tools/binary-generator`.
-pub struct RvaBundle {}
+pub struct RvaBundle {
+    pub equip_game_data_deserialize: u32,
+    pub equip_game_data_serialize: u32,
+}

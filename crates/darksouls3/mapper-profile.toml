@@ -1,0 +1,7 @@
+[[patterns]]
+pattern = "[23] 41 b8 58 00 00 00 48 8b ? ff 50 18 83 f8 58"
+captures = ["equip_game_data_deserialize"]
+
+[[patterns]]
+pattern = "[20] 48 8b d9 41 b8 58 00 00 00 48 8b ? ff 50 18 48 83 f8 58"
+captures = ["equip_game_data_serialize"]
