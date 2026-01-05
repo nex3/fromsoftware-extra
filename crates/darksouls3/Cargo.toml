@@ -1,0 +1,17 @@
+[package]
+name = "darksouls3-extra"
+version.workspace = true
+edition.workspace = true
+repository.workspace = true
+license.workspace = true
+readme = false
+description = "Additional hook-based APIs for working with Dark Souls III"
+
+[dependencies]
+pelite.workspace = true
+fromsoftware-shared.workspace = true
+thiserror.workspace = true
+
+[package.metadata.docs.rs]
+default-target = "x86_64-pc-windows-msvc"
+targets = ["x86_64-pc-windows-msvc"]

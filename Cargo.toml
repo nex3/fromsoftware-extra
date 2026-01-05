@@ -1,0 +1,25 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/darksouls3",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+repository = "https://github.com/nex3/fromsoftware-extra"
+license = "MIT OR Apache-2.0"
+
+[workspace.dependencies]
+fromsoftware-shared = { git = "https://github.com/nex3/fromsoftware-rs", branch = "syn-extra-traits" }
+darksouls3 = { git = "https://github.com/nex3/fromsoftware-rs", branch = "syn-extra-traits" }
+thiserror = "1"
+pelite = "0.10"
+ilhook = { version = "2.2.0", features = ["x64"] }
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
+panic = "abort"
+opt-level = "z"
