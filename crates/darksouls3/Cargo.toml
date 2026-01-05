@@ -11,6 +11,7 @@ description = "Additional hook-based APIs for working with Dark Souls III"
 pelite.workspace = true
 fromsoftware-shared.workspace = true
 thiserror.workspace = true
+windows.workspace = true
 
 [package.metadata.docs.rs]
 default-target = "x86_64-pc-windows-msvc"

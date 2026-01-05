@@ -33,6 +33,7 @@ dependencies = [
  "fromsoftware-shared",
  "pelite",
  "thiserror",
+ "windows",
 ]
 
 [[package]]
