@@ -66,7 +66,7 @@ dependencies = [
 [[package]]
 name = "fromsoftware-shared"
 version = "0.11.0"
-source = "git+https://github.com/nex3/fromsoftware-rs?branch=syn-extra-traits#362e2f6bdabb495b0af5ea1c8b3aa3217129fe14"
+source = "git+https://github.com/vswarte/fromsoftware-rs#318fb1f58ae2a835cb1b7dcb9de24a056ce1efc7"
 dependencies = [
  "from-singleton",
  "fromsoftware-shared-macros",
@@ -81,7 +81,7 @@ dependencies = [
 [[package]]
 name = "fromsoftware-shared-macros"
 version = "0.11.0"
-source = "git+https://github.com/nex3/fromsoftware-rs?branch=syn-extra-traits#362e2f6bdabb495b0af5ea1c8b3aa3217129fe14"
+source = "git+https://github.com/vswarte/fromsoftware-rs#318fb1f58ae2a835cb1b7dcb9de24a056ce1efc7"
 dependencies = [
  "inflections",
  "proc-macro2",
