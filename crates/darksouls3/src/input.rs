@@ -37,10 +37,9 @@ impl InputBlocker {
             return Ok(blocker);
         }
 
-        let Ok(_guard) = INITIALIZING_INPUT_BLOCKER.lock() else {
-            INITIALIZING_INPUT_BLOCKER.clear_poison();
-            return unsafe { Self::get_instance() };
-        };
+        let _guard = INITIALIZING_INPUT_BLOCKER
+            .lock()
+            .unwrap_or_else(|e| e.into_inner());
 
         let rvas = rva::get();
         let inputs_and_rvas = [
