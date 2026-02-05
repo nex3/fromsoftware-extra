@@ -14,6 +14,7 @@ fromsoftware-shared.workspace = true
 ilhook.workspace = true
 thiserror.workspace = true
 windows.workspace = true
+bitflags.workspace = true
 
 [package.metadata.docs.rs]
 default-target = "x86_64-pc-windows-msvc"

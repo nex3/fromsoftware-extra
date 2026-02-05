@@ -1,3 +1,15 @@
+[[vmts]]
+class = "DLUID::KeyboardDevice<DLKR::DLMultiThreadingPolicy>"
+captures = { "dluid_keyboard_device_should_block_input" = 27 }
+
+[[vmts]]
+class = "DLUID::MouseDevice<DLKR::DLMultiThreadingPolicy>"
+captures = { "dluid_mouse_device_should_block_input" = 27 }
+
+[[vmts]]
+class = "DLUID::PadDevice<DLKR::DLMultiThreadingPolicy>"
+captures = { "dluid_pad_device_should_block_input" = 27 }
+
 [[patterns]]
 pattern = "[23] 41 b8 58 00 00 00 48 8b ? ff 50 18 83 f8 58"
 captures = ["equip_game_data_deserialize"]

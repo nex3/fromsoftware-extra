@@ -112,6 +112,7 @@ dependencies = [
 name = "darksouls3-extra"
 version = "0.1.0"
 dependencies = [
+ "bitflags",
  "darksouls3",
  "fromsoftware-shared",
  "ilhook",
