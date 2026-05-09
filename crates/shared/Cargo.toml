@@ -1,0 +1,15 @@
+[package]
+name = "fromsoftware-extra-shared"
+version.workspace = true
+edition.workspace = true
+repository.workspace = true
+license.workspace = true
+readme = false
+description = "Shared infrastructure for fromsoftware-extra crates"
+
+[dependencies]
+ilhook.workspace = true
+
+[package.metadata.docs.rs]
+default-target = "x86_64-pc-windows-msvc"
+targets = ["x86_64-pc-windows-msvc"]

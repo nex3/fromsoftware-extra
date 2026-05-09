@@ -1,9 +1,9 @@
 use std::io::{Read, Seek, SeekFrom, Write};
 
-use darksouls3::dlio::*;
-use darksouls3::sprj::*;
 use ilhook::{x64::*, *};
 use pelite::pe64::Pe;
+use sekiro::dlio::*;
+use sekiro::sprj::*;
 use shared::{Program, ext::*};
 
 use crate::rva;
@@ -50,14 +50,13 @@ where
     OnSave: (Fn() -> Option<Vec<u8>>) + Send + Sync + 'a,
 {
     let callback = move |reg: *mut Registers, original| {
-        let original: extern "win64" fn(&EquipGameData, &mut DLMemoryOutputStream) -> usize =
+        let original: extern "win64" fn(&PlayerGameData, &mut DLMemoryOutputStream) -> usize =
             unsafe { std::mem::transmute(original) };
-        // Safety: We trust that DS3 gives us valid pointers.
-        let this = unsafe { &*((*reg).rcx as *const EquipGameData) };
+        let this = unsafe { &*((*reg).rcx as *const PlayerGameData) };
         let stream = unsafe { &mut *((*reg).rdx as *mut DLMemoryOutputStream) };
 
         // Never write custom save data for the main menu.
-        if !this.is_main_menu()
+        if !this.player_info.is_default()
             && let Some(result) = callback()
         {
             // Add a small header indicating that fromsoftware-rs modified
@@ -73,8 +72,8 @@ where
     };
 
     let va = Program::current()
-        .rva_to_va(rva::get().equip_game_data_serialize)
-        .expect("Call target for equip_game_data_serialize was not in exe");
+        .rva_to_va(rva::get().player_game_data_serialize)
+        .expect("Call target for player_game_data_serialize was not in exe");
     unsafe {
         hook_closure_retn(
             va as usize,
@@ -91,10 +90,9 @@ where
     OnLoad: Fn(OnLoadType) + Send + Sync + 'a,
 {
     let callback = move |reg: *mut Registers, original| {
-        let original: extern "win64" fn(&mut EquipGameData, &mut DLMemoryInputStream) -> usize =
+        let original: extern "win64" fn(&mut PlayerGameData, &mut DLMemoryInputStream) -> usize =
             unsafe { std::mem::transmute(original) };
-        // Safety: We trust that DS3 gives us valid pointers.
-        let this = unsafe { &mut *((*reg).rcx as *mut EquipGameData) };
+        let this = unsafe { &mut *((*reg).rcx as *mut PlayerGameData) };
         let stream = unsafe { &mut *((*reg).rdx as *mut DLMemoryInputStream) };
 
         let mut header = [0; HEADER.len()];
@@ -113,7 +111,7 @@ where
         }
 
         if !has_saved_data {
-            callback(if this.is_main_menu() {
+            callback(if this.player_info.is_default() {
                 OnLoadType::MainMenu
             } else {
                 OnLoadType::NoSavedData
@@ -124,8 +122,8 @@ where
     };
 
     let va = Program::current()
-        .rva_to_va(rva::get().equip_game_data_deserialize)
-        .expect("Call target for equip_game_data_deserialize was not in exe");
+        .rva_to_va(rva::get().player_game_data_deserialize)
+        .expect("Call target for player_game_data_deserialize was not in exe");
     unsafe {
         hook_closure_retn(
             va as usize,

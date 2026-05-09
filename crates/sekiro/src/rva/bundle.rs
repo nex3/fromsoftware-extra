@@ -10,9 +10,6 @@
 /// These are populated from `mapper-profile.toml` in the root of this package
 /// using `tools/binary-generator`.
 pub struct RvaBundle {
-    pub dluid_keyboard_device_should_block_input: u32,
-    pub dluid_mouse_device_should_block_input: u32,
-    pub dluid_pad_device_should_block_input: u32,
-    pub equip_game_data_deserialize: u32,
-    pub equip_game_data_serialize: u32,
+    pub player_game_data_deserialize: u32,
+    pub player_game_data_serialize: u32,
 }

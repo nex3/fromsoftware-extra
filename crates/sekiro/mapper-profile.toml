@@ -1,0 +1,3 @@
+[[vmts]]
+class = "NS_SPRJ::PlayerGameData"
+captures = { "player_game_data_serialize" = 1, "player_game_data_deserialize" = 2 }

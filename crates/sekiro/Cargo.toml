@@ -1,14 +1,14 @@
 [package]
-name = "darksouls3-extra"
+name = "sekiro-extra"
 version.workspace = true
 edition.workspace = true
 repository.workspace = true
 license.workspace = true
 readme = false
-description = "Additional hook-based APIs for working with Dark Souls III"
+description = "Additional hook-based APIs for working with Sekiro"
 
 [dependencies]
-darksouls3 = { git = "https://github.com/vswarte/fromsoftware-rs" }
+sekiro = { git = "https://github.com/vswarte/fromsoftware-rs" }
 pelite.workspace = true
 fromsoftware-extra-shared.workspace = true
 fromsoftware-shared.workspace = true
@@ -16,6 +16,7 @@ ilhook.workspace = true
 thiserror.workspace = true
 windows.workspace = true
 bitflags.workspace = true
+log.workspace = true
 
 [package.metadata.docs.rs]
 default-target = "x86_64-pc-windows-msvc"
